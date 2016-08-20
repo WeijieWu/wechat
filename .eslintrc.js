@@ -16,9 +16,14 @@ module.exports = {
     "babel/no-await-in-loop": 1,
     "babel/flow-object-type": 1,
     "babel/func-params-comma-dangle": 1,
-    "valid-jsdoc": 0
+    "valid-jsdoc": 0,
+    "allowShortCircuit": true
   },
   "plugins": [
     "babel"
-  ]
+  ],
+  "globals": {
+    "describe": true,
+    "it": true
+  }
 };

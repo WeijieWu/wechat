@@ -17,3 +17,10 @@ export default function index(param) {
     return param;
   });
 }
+
+export function getToken(param) {
+  return co(function * () {
+    return param;
+  });
+}
+
