@@ -1,16 +1,11 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
-const dot = require('dot');
+const mocha = require('gulp-mocha');
 var paths = {
   scripts: ['src/**/*.js', 'src/**/*.json'],
   images: ''
 };
-
-dot.process({
-  destination: `./src/views/render`,
-  path: `./src/views/templates`
-});
 
 gulp.task('default', ["config", "transrform"]);
 
@@ -34,5 +29,16 @@ gulp.task('devstart', () =>
 
 gulp.task('watch', ['default', 'devstart'], () =>
   gulp.watch(paths.scripts, ['default'])
+);
+
+gulp.task('test', () =>
+  gulp.src('src/api/**/test.js')
+    .pipe(mocha())
+    .once('error', () => {
+      process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
+    })
 );
 
