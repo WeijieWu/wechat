@@ -15,7 +15,5 @@ import co from 'co';
 export default function index(param) {
   return co(function * () {
     return param;
-
-    
   });
 }
